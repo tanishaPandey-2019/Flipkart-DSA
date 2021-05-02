@@ -1,0 +1,15 @@
+long long solve(int n, long long a[], long long b)
+    {
+        sort(a,a+n);
+        for(int i=0;i<n;i++)
+        {
+            if(a[i] == b)
+            {
+                b = b*2;
+                continue;
+            }
+        }
+        
+        return b;
+        //code here.
+    } 
