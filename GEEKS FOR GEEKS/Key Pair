@@ -1,0 +1,15 @@
+	bool hasArrayTwoCandidates(int arr[], int n, int x) {
+	    
+	 unordered_set<int> nums;
+	 for(int i=0;i<n;i++)
+	 {
+	     int temp = x - arr[i];
+	     if(nums.find(temp) != nums.end())
+	     {
+	         return 1;
+	     }
+	     else
+	     {
+	         nums.insert(arr[i]);
+	     }
+	 }
