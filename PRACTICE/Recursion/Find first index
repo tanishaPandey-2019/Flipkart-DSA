@@ -1,0 +1,42 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int checkNum(int arr[], int n, int value, int index)
+{
+	if (index == n)
+	{
+		return -1;
+	}
+	if (arr[index + 1] == value)
+	{
+		return index+1;
+	}
+	int ans = checkNum(arr, n , value, index + 1);
+	return ans;
+	
+
+
+}
+
+int main()
+{
+	int n;
+	cin >> n;
+
+	int arr[1000];
+	for (int i = 0; i < n; i++)
+	{
+		cin >> arr[i];
+	}
+
+	int value;
+	cin >> value;
+	int index = -1;
+	
+	int ans = checkNum(arr, n, value, index);
+	cout << ans << endl;
+	
+	
+
+	return 0;
+}
