@@ -1,0 +1,17 @@
+ int kthDigit(int A,int B,int K){
+        
+        long long num = pow(A,B);
+        int i=1,ans;
+        
+        while(i<=K)
+        {
+            ans = num%10;
+            num = num/10;
+            i++;
+            
+        }
+        return ans;
+        
+        
+        // code here
+    }
