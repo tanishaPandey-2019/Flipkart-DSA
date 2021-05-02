@@ -1,0 +1,28 @@
+Node* deleteMid(Node* head)
+{
+    Node * temp = head;
+    int count = 0;
+    while(temp != NULL)
+    {
+        temp = temp->next;
+        count++;
+    }
+    int len = count;
+    
+    Node * mid = head;
+    int i = 1;
+    int pos = (len/2) ;
+    while(i<pos)
+    {
+        mid = mid->next;
+        i++;
+    }
+    Node * nextNode = mid->next->next;
+    Node* delNode = mid->next;
+    mid->next = nextNode;
+    delete(delNode);
+    
+    return head;
+    
+    // Your Code Here
+}
