@@ -1,0 +1,51 @@
+ string shortestPath (string S)
+    {
+        int cordX = 0, cordY = 0;
+        
+        for(int i=0;i<S.length();i++)
+        {
+            if(S[i] == 'N')
+            {
+                cordY++;
+            }
+            if(S[i] == 'S')
+            {
+                cordY--;
+            }
+            if(S[i] == 'E')
+            {
+                cordX++;
+            }
+            if(S[i] == 'W')
+            {
+                cordX--;
+            }
+            
+        }
+        
+        string ans;
+        int x = 0, y = 0;
+        
+        while(x<cordX)
+        {
+            ans += 'E';
+            x++;
+        }
+        while(y<cordY)
+        {
+            ans += 'N';
+            y++;
+        }
+        while(y>cordY)
+        {
+            ans += 'S';
+            y--;
+        }
+        while(x>cordX)
+        {
+            ans += 'W';
+            x--;
+        }
+        
+        return ans;
+   }     
