@@ -1,0 +1,21 @@
+long long findMinDiff(vector<long long> a, long long n, long long m){
+        
+        sort(a.begin(),a.end());
+        long long i = 0;
+        long long j = m-1;
+        long long sumMin = INT_MAX, sum = 0;
+        while(j!=n)
+        {
+            sum = a[j] - a[i];
+            if(sum < sumMin)
+            {
+                sumMin = sum;
+            }
+            i++;
+            j++;
+        }
+        
+        return sumMin;
+    //code
+    
+    }   
