@@ -1,0 +1,86 @@
+//move idx in preorder and search for that element in inorder and divide it in left and right subtree 
+//left subtree = left elements of curr
+//right subtree = right elements of curr
+
+#include<iostream>
+using namespace std;
+
+struct Node
+{
+	int data;
+	Node* left;
+	Node* right;
+
+	Node(int val)
+	{
+		data = val;
+		left = NULL;
+		right = NULL;
+	}
+};
+
+int search(int ino[], int start, int end, int value)
+{
+	for (int i = start; i <= end; i++)
+	{
+		if (ino[i] == value)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+Node* buildTree(int ino[], int pre[], int start, int end)
+{
+	static int idx = 0;
+	//invalid pair of pointers
+	if (start > end)
+	{
+		return NULL;
+	}
+
+	int curr = pre[idx];
+	idx++;
+	Node* node = new Node(curr);
+
+	//when no right left node left only one elemnt left
+	if (start == end)
+	{
+		return node;
+	}
+	int pos = search(ino, start , end , curr);
+	node->left = buildTree(ino, pre, start, pos - 1);
+	node->right = buildTree(ino, pre, pos + 1, end);
+
+	return node;
+}
+
+
+
+void inorder(Node* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+
+	inorder(root->left);
+	cout <<root->data << " ";
+	inorder(root->right);
+}
+
+
+int main()
+{
+	
+	int pre[] = { 1,2,4,3,5 };
+	int ino[] = { 4,2,1,5,3 };
+
+	Node* root = buildTree(ino, pre, 0, 4);
+	inorder(root);
+
+
+	return 0;
+}
