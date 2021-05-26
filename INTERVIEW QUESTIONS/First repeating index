@@ -1,0 +1,47 @@
+#include<iostream>
+#include<unordered_map>
+#include<climits>
+#include<vector>
+using namespace std;
+
+int main()
+{
+	vector<int> arr;
+	int n,temp;
+	cin >> n;
+
+	for (int i = -0; i < n; i++)
+	{
+		cin >> temp;
+		arr.push_back(temp);
+
+	}
+
+	unordered_map<int, int> arrIndex;
+	unordered_map<int, int> ::iterator itr;
+
+	for (int i = n - 1; i >= 0; i--)
+	{
+		if (arrIndex.find(arr[i]) != arrIndex.end())
+		{
+			itr = arrIndex.find(arr[i]);
+			itr->second = i;
+		}
+		else
+		{
+			arrIndex[arr[i]] = -1;
+		}
+	}
+
+	int minIndex = INT_MAX;
+	for (auto itr = arrIndex.begin(); itr != arrIndex.end(); itr++)
+	{
+		if (itr->second < minIndex && itr->second != -1)
+		{
+			minIndex = itr->second;
+		}
+	}
+
+	cout << minIndex;
+	return 0;
+}
