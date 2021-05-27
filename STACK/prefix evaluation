@@ -1,0 +1,65 @@
+#include<iostream>
+#include<stack>
+#include<vector>
+#include<string>
+using namespace std;
+
+int prefix(string str)
+{
+	stack<int> s;
+	int n = str.length();
+
+	for (int i = n - 1; i >= 0; i--)
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+		{
+			s.push(str[i] - '0');
+		}
+		else
+		{
+			char operand = str[i];
+			int operator_1 = s.top();
+			s.pop();
+			int operator_2 = s.top();
+			s.pop();
+			int ans;
+			if (operand == '+')
+			{
+				ans = operator_1 + operator_2;
+				s.push(ans);
+			}
+			else if (operand == '-')
+			{
+				ans = operator_1 - operator_2;
+				s.push(ans);
+			}
+			else if (operand == '*')
+			{
+				ans = operator_1 * operator_2;
+				s.push(ans);
+			}
+			else if (operand == '/')
+			{
+				ans = operator_1 / operator_2;
+				s.push(ans);
+			}
+
+		}
+	}
+
+	return s.top();
+
+}
+
+int main()
+{
+	string s = "-+7*45+20";
+	int ans = prefix(s);
+	cout << ans << " ";
+
+	
+
+	
+
+	return 0;
+}
