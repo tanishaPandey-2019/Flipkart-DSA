@@ -1,0 +1,37 @@
+#include<iostream>
+#include<stack>
+#include<vector>
+#include<string>
+using namespace std;
+
+void reverseSentence(string str)
+{
+	stack<string>s;
+
+	int n = str.length();
+	for (int i = 0; i < n; i++)
+	{
+		string word = "";
+		while (str[i] != ' ' && i < n)
+		{
+			word += str[i];
+			i++;
+		}
+		s.push(word);
+	}
+
+	while (!s.empty())
+	{
+		cout << s.top() << " ";
+		s.pop();
+	}
+	cout << endl;
+}
+
+int main()
+{
+	string sentence = "Hello! My name is Tanisha.";
+	cout << sentence << endl;
+	reverseSentence(sentence);
+	return 0;
+}
