@@ -46,6 +46,7 @@ Node* searchBST(Node* root, int val)
 	return searchBST(root->right, val);
 }
 
+//function main
 int main()
 {
 	Node* root = NULL;
