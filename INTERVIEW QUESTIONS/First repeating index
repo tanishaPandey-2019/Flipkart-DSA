@@ -43,5 +43,5 @@ int main()
 	}
 
 	cout << minIndex;
-	return 0;
+	
 }
